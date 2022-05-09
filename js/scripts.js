@@ -17,7 +17,7 @@ document.write(escapedText2);
 
 alert('Hello World');
 
-let myName = 'Zubair';
+let myName = '';
 let age = 31;
 let message = `Hello! This is a longer message here. 
 My name is ${myName},
@@ -54,15 +54,26 @@ let mixedArrays = [
 ];
 document.write(mixedArrays);*/
 
-alert("Welcome!");
+alert("Welcome To The Pokedex!");
 
-let pokemonList = [{name: "Onyx", type: "Rock", height: "8.8m"} , {name: "Weedle", type: "Bug", height: "0.3m"} , {name: "Squirtle", type: "Water", height: "0.5m"}];
+let pokemonList = [
+  {name: "Onyx", type: "Rock", height: 8.8},
+  {name: "Weedle", type: ["Bug", "Grass"] , height: 2}, 
+  {name: "Squirtle", type: "Water", height: 5},
+  {name: "Raidon", type: ["Rock", "Ground"] , height: 7.6}
+]; 
 
-console.log(pokemonList[0]);
-console.log(pokemonList[1]);
-console.log(pokemonList[2]);
-
-
-console.log(pokemonList[0]);
-console.log(pokemonList[1]);
-console.log(pokemonList[2]);
+for (let i = 0; i < pokemonList.length; i++){
+   if (pokemonList[i].type === ["Rock"||"Ground"]||["Rock"&&"Ground"] && pokemonList[i].height > 7){
+     console.log(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- Wow that is BIG!");
+     document.write(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- Wow that is BIG!");
+   }else if (pokemonList[i].type === "Water" && pokemonList[i].height > 3 && pokemonList[i].height < 7){
+     console.log(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is average!");
+     document.write(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is average!");
+   }else {
+     console.log(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is small!");
+     document.write(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is small!");
+   }
+ }
+ 
+ 

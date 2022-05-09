@@ -1,0 +1,37 @@
+body{
+    margin: 20px;
+    background-color: silver;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.page-header{
+   background-color: teal; 
+   margin: 20px;
+   padding: 30px;
+   text-align: center;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 20px;
+}
+
+.hdr-img1 {
+    float: left;
+    margin-top: -45px;
+}
+
+.hdr-img2 {
+    float: left;
+    margin-top: -40px;
+}
+
+.hdr-img3 {
+    float: right; 
+    margin-top: -30px;  
+}
+
+.hdr-img4 {
+    float: right;
+    margin-top: -50px;
+}
+
+    
