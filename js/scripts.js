@@ -55,26 +55,20 @@ let mixedArrays = [
 document.write(mixedArrays);*/
 
 //alert("Welcome To The Pokedex!");
-/*let pokemonRepository = (function (){
-  let pokemonList = [
-    {name: "Onyx", type: "Rock", height: 8.8},
-    {name: "Weedle", type: ["Bug", "Grass"] , height: 2}, 
-    {name: "Squirtle", type: "Water", height: 5},
-    {name: "Raidon", type: ["Rock", "Ground"] , height: 7.6}
-  ]; 
-  function getAll (){
+let pokemonRepository = (function (){
+  let pokemonList = []; 
+
+  return{
+  getAll: function(pokemon){
     return pokemonList;
-  }
-  function add(pokemon){
+  },
+  add: function(pokemon){
     pokemon.List.push(pokemon);
   }
-  return {
-    getAll: getAll,
-    add:add
-  };
+ };
 })();
 
-document.write(pokemonRepository.getAll());*/
+document.write(pokemonRepository.getAll());
 
 let pokemonList = [
   {name: "Onyx", type: "Rock", height: 8.8},
@@ -103,7 +97,7 @@ function getName(pokemon){
 
 
 function getHeight(pokemon){
-  if (pokemon.height > 0  && pokemon.height <5){
+  if (pokemon.height > 0  && pokemon.height < 5){
     return "Height: " + pokemon.height + "- that is small!"  + "<br>";
   }else if (pokemon.height === 5 && pokemon.height < 7){
     return "Height: " + pokemon.height + "- that is average "  + "<br>";
