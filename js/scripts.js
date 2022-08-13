@@ -56,26 +56,44 @@ document.write(mixedArrays);*/
 
 //alert("Welcome To The Pokedex!");
 let pokemonRepository = (function (){
-  let pokemonList = []; 
-
+  let pokemonList = [
+    {name: "Onyx", type: "Rock", height: 8.8},
+    {name: "Weedle", type: ["Bug", "Grass"] , height: 2}, 
+    {name: "Squirtle", type: "Water", height: 5},
+    {name: "Raidon", type: ["Rock", "Ground"] , height: 7.6}
+  ]; 
   return{
   getAll: function(pokemon){
     return pokemonList;
   },
   add: function(pokemon){
-    pokemon.List.push(pokemon);
-  }
+    pokemonList.push(pokemon);
+  },
+  getHeight: function(pokemon){
+    if (pokemon.height > 0  && pokemon.height < 5){
+      return "Height: " + pokemon.height + "- that is small!"  + "<br>";
+    }else if (pokemon.height === 5 && pokemon.height < 7){
+      return "Height: " + pokemon.height + "- that is average "  + "<br>";
+    }else if (pokemon.height > 7){
+      return "Height: " + pokemon.height + "- WOW! that is BIG"  + "<br>";
+    }else
+      return "Undefined";
+  },
+  getType: function(pokemon) {
+    if (typeof(pokemon.type) === 'string') {
+       return "Type: "+pokemon.type;
+     }
+     else {
+       let str = '';
+       for (let i = 0; i < pokemon.type.length; i++){
+         str += " Types: " + pokemon.type[i] + ", "
+       }
+      return str
+     }
+     
+   }
  };
 })();
-
-document.write(pokemonRepository.getAll());
-
-let pokemonList = [
-  {name: "Onyx", type: "Rock", height: 8.8},
-  {name: "Weedle", type: ["Bug", "Grass"] , height: 2}, 
-  {name: "Squirtle", type: "Water", height: 5},
-  {name: "Raidon", type: ["Rock", "Ground"] , height: 7.6}
-]; 
 
 /*for (let i = 0; i < pokemonList.length; i++){
    if (pokemonList[i].type === ["Rock"||"Ground"]||["Rock"&&"Ground"] && pokemonList[i].height > 7){
@@ -91,44 +109,12 @@ let pokemonList = [
  }
 }*/
 
-function getName(pokemon){
-  return "Name: " + pokemon.name + "!";
-}
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({name: "Bulbasaur", type: "Grass", height: 4})
+console.log(pokemonRepository.getAll());
 
 
-function getHeight(pokemon){
-  if (pokemon.height > 0  && pokemon.height < 5){
-    return "Height: " + pokemon.height + "- that is small!"  + "<br>";
-  }else if (pokemon.height === 5 && pokemon.height < 7){
-    return "Height: " + pokemon.height + "- that is average "  + "<br>";
-  }else if (pokemon.height > 7){
-    return "Height: " + pokemon.height + "- WOW! that is BIG"  + "<br>";
-  }else
-    return "Undefined";
-}
 
-function getType(pokemon) {
- if (typeof(pokemon.type) === 'string') {
-    return "Type: "+pokemon.type;
-  }
-  else {
-    let str = '';
-    for (let i = 0; i < pokemon.type.length; i++){
-      str += " Types: " + pokemon.type[i] + ", "
-    }
-   return str
-  }
-  
-}
 
-function getList(pokemon) {
-  let str = '';
-  for (let i = 0; i < pokemon.length; i++){
-    str +=  getName(pokemon[i]) +  ", " +  getType(pokemon[i]) + ", " + getHeight(pokemon[i])
-  }
-  return str;
-}
-
-document.write(getList(pokemonList))
 
 
