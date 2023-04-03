@@ -55,14 +55,14 @@ let mixedArrays = [
 document.write(mixedArrays);*/
 
 //alert("Welcome To The Pokedex!");
-let pokemonRepository = (function (){
+let pokemonRepository = (function () {
   let pokemonList = [
     {name: "Onyx", type: "Rock", height: 8.8},
     {name: "Weedle", type: ["Bug", "Grass"] , height: 2}, 
     {name: "Squirtle", type: "Water", height: 5},
     {name: "Raidon", type: ["Rock", "Ground"] , height: 7.6}
   ]; 
-  return{
+  return {
   getAll: function(pokemon){
     return pokemonList;
   },
@@ -84,37 +84,33 @@ let pokemonRepository = (function (){
        return "Type: "+pokemon.type;
      }
      else {
-       let str = '';
+       let str = ''; 
        for (let i = 0; i < pokemon.type.length; i++){
          str += " Types: " + pokemon.type[i] + ", "
        }
       return str
      }
-     
-   }
- };
+    },
+  
+    
+  main: function(pokemon) {    
+  let header = document.querySelector('.main-title');
+  header.innerHTML += "Pokedex Prototype";
+    let mainList = document.querySelector('ul');
+      for (let i = 0; i < pokemonRepository.getAll().length; i++){
+        let p = document.createElement('p')
+        let listItem = document.createElement('li')
+        let button = document.createElement('button')
+        p.innerHTML += "" + pokemonRepository.getAll()[i].name + "<br>" + pokemonRepository.getHeight(pokemonRepository.getAll()[i]) + "";
+    button.appendChild(p)
+    listItem.appendChild(button)
+    mainList.appendChild(listItem)
+      }
+    } // main
+
+  } // return
 })();
-
-/*for (let i = 0; i < pokemonList.length; i++){
-   if (pokemonList[i].type === ["Rock"||"Ground"]||["Rock"&&"Ground"] && pokemonList[i].height > 7){
-     console.log(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- Wow that is BIG!");
-     document.write(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- Wow that is BIG!");
-   }else if (pokemonList[i].type === "Water" && pokemonList[i].height > 3 && pokemonList[i].height < 7){
-     console.log(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is average!");
-     document.write(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is average!");
-   }else {
-     console.log(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is small!");
-     document.write(pokemonList[i].name + "(height: " + pokemonList[i].height + ")" + "- that is small!");
-   }
- }
-}*/
-
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({name: "Bulbasaur", type: "Grass", height: 4})
-console.log(pokemonRepository.getAll());
-
-
-
+pokemonRepository.main()
 
 
 
