@@ -81,7 +81,7 @@ let pokemonRepository = (function () {
     titleElement.innerText = title; /*inner text says name of pokemon*/
 
     let contentElement1 = document.createElement("p"); /*creates p tag index line 43*/
-    contentElement1.innerText = text1; /*inner text shows height of pokemon*/
+    contentElement1.innerText = "Height: " + text1; /*inner text shows height of pokemon*/
 
     let contentElement2 = document.createElement("p");
     contentElement2.innerText = "Types: "+ text2;
