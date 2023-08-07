@@ -6,5 +6,6 @@
         "Bulbasaur",
         "pokemons",
         "Snorlax"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

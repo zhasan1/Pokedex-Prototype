@@ -63,11 +63,11 @@ let pokemonRepository = (function () {
     // {name: "Raidon", type: ["Rock", "Ground"] , height: 7.6}
   ];
 
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=50";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=200";
 
   let modalContainer = document.querySelector("#modal-container"); /*variable needed to be redefined frequently so globally created*/
    
-  function showModal (title , text1, text2 , img){
+  function showModal (title , text1, text2 , text3, img){
     modalContainer.innerHTML = " "; /*clears inner HTML format for modal-container ID*/
     let modal = document.createElement("div"); /*creates div element in index line 40*/
     modal.classList.add("modal"); /*adds the class modal to div tag*/
@@ -86,6 +86,9 @@ let pokemonRepository = (function () {
     let contentElement2 = document.createElement("p");
     contentElement2.innerText = "Types: "+ text2;
 
+    let contentElement3 = document.createElement("p");
+    contentElement3.innerText = "Moves: "+ text3;
+
     let imageElement = document.createElement("img"); /*creates img tag index line 44*/
     // imageElement.src = "https://pokeapi.co/api/v2/pokemon/?limit=50";
     imageElement.setAttribute ("src" , img); /*adds src attribute for a source for the image*/
@@ -97,6 +100,7 @@ let pokemonRepository = (function () {
     modal.appendChild(titleElement);
     modal.appendChild(contentElement1);
     modal.appendChild(contentElement2);
+    modal.appendChild(contentElement3);
     modal.appendChild(imageElement);
     modalContainer.appendChild(modal);
 
@@ -170,6 +174,7 @@ let pokemonRepository = (function () {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
+      item.abilities = details.abilities.moves;
     }).catch (function(e){
       console.error(e);
     });
@@ -177,9 +182,10 @@ let pokemonRepository = (function () {
 
   function showDetails(pokemon){
      loadDetails(pokemon).then(function(){
-      console.log(pokemon)
+      // console.log(pokemon)
       pokemon.types.map(x=>x.type.name)
-      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.imageUrl);   
+      // pokemon.abilities.map(x=> x.abilities.ability.name)
+      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.moves , pokemon.imageUrl);   
      })     
   } 
 
