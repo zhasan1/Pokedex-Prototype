@@ -9,35 +9,57 @@ body{
 .page-header{
    background-color: teal; 
    margin: 20px;
-   padding: 30px;
-   text-align: center;
-   font-family: 'Courier New', Courier, monospace;
-   font-size: 20px;
+   padding: 50px;
+   /* text-align: center; */
+   /* text-align: center;
+   text-decoration-line: underline;
+   overflow-wrap: break-word; */
+   /* font-family: 'Courier New', Courier, monospace;
+   font-size: 20px; */
 }
 
 .hdr-img1 {
     float: left;
-    margin-top: -45px;
+    margin-top: -75px;
+    height: auto;
+    width: auto;
 }
 
 .hdr-img2 {
     float: left;
-    margin-top: -40px;
+    margin-top: -55px;
+    height: auto;
+    width: auto;
 }
 
 .hdr-img3 {
     float: right; 
-    margin-top: -30px;  
+    margin-top: -55px;  
+    height: auto;
+    width: auto;
 }
 
 .hdr-img4 {
     float: right;
-    margin-top: -50px;
+    margin-top: -75px;
+    height: auto;
+    width: auto;
 }
 
 .pokemon-list{
   list-style-type: none;
+  display: contents;
+  align-items: center;
 }   
+
+.main-title{
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.7em;
+  text-align: center;
+  text-decoration-line: underline;
+  /* overflow-wrap: break-word; */
+}
 
 html, 
 body {
@@ -98,7 +120,7 @@ body {
   margin-bottom: 0;
 }
 
-@media all and (max-width: 300px){
+/* @media all and (max-width: 250px){
     .grid {
         grid-template-columns: 1fr;
         grid-gap: 20px;
@@ -107,18 +129,18 @@ body {
         grid-column: auto / auto;
         grid-row: auto / auto;
     }
-    .main-title {
+    .page-header {
         font-size: 20px;
     }  
-}
+} */
 
-@media all and (min-width: 300px) and (max-width: 800px){
+@media all and (min-width: 250px) and (max-width: 1200px){
     .grid {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media all and (max-width: 1000px){
+/* @media all and (min-width: 1200px){
     .grid {
         grid-template-columns: 1fr;
         grid-gap: 20px;
@@ -127,7 +149,7 @@ body {
         grid-column: auto / auto;
         grid-row: auto / auto;
     }
-    .main-title {
+    .page-header {
         font-size: 20px;
     }  
-}
+} */

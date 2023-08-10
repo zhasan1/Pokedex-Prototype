@@ -82,12 +82,16 @@ let pokemonRepository = (function () {
 
     let contentElement1 = document.createElement("p"); /*creates p tag index line 43*/
     contentElement1.innerText = "Height: " + text1; /*inner text shows height of pokemon*/
+    contentElement1.classList.add("height-stat");
+
 
     let contentElement2 = document.createElement("p");
     contentElement2.innerText = "Types: "+ text2;
+    contentElement2.classList.add("type-stat");
 
     let contentElement3 = document.createElement("p");
     contentElement3.innerText = "Moves: "+ text3;
+    contentElement3.classList.add("move-stat");
 
     let imageElement = document.createElement("img"); /*creates img tag index line 44*/
     // imageElement.src = "https://pokeapi.co/api/v2/pokemon/?limit=50";
@@ -159,7 +163,7 @@ let pokemonRepository = (function () {
         detailsUrl: item.url
         };
         add(pokemon);
-    // console.log(pokemon);
+    console.log(pokemon);
       });
     }).catch(function(e){
         console.error(e);
@@ -174,7 +178,7 @@ let pokemonRepository = (function () {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
-      item.abilities = details.abilities.moves;
+      item.moves = details.moves;
     }).catch (function(e){
       console.error(e);
     });
@@ -183,9 +187,7 @@ let pokemonRepository = (function () {
   function showDetails(pokemon){
      loadDetails(pokemon).then(function(){
       // console.log(pokemon)
-      pokemon.types.map(x=>x.type.name)
-      // pokemon.abilities.map(x=> x.abilities.ability.name)
-      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.moves , pokemon.imageUrl);   
+      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.moves.map(x=>x.move.name) , pokemon.imageUrl);   
      })     
   } 
 
