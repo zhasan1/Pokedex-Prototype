@@ -91,7 +91,7 @@ body {
   text-align: center;
 }
 
-.modal {
+/* .modal {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
@@ -118,7 +118,7 @@ body {
 
 .modal p {
   margin-bottom: 0;
-}
+} */
 
 /* @media all and (max-width: 250px){
     .grid {
