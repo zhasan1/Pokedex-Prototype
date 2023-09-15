@@ -1,4 +1,4 @@
-body{
+/* body{
     margin: 20px;
     background-color: silver;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -16,7 +16,7 @@ body{
    overflow-wrap: break-word; */
    /* font-family: 'Courier New', Courier, monospace;
    font-size: 20px; */
-}
+/* }
 
 .hdr-img1 {
     float: left;
@@ -46,20 +46,20 @@ body{
     width: auto;
 }
 
-.pokemon-list{
+/* .pokemon-list{
   list-style-type: none;
   display: contents;
   align-items: center;
-}   
+}    */
 
-.main-title{
+/* .main-title{
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.7em;
   text-align: center;
   text-decoration-line: underline;
   /* overflow-wrap: break-word; */
-}
+/* }
 
 html, 
 body {
@@ -81,14 +81,19 @@ body {
   background: rgba(0, 0, 0, 0.5);
   
   /* to show it above other content */
-  z-index: 999; 
+  /* z-index: 999;  */
   
   /* to allow scrolling if the screen is not high enough*/
-  overflow: auto; 
+  /* overflow: auto;  */
   
   /* this is used to center the modal */
-  display: grid;
+  /* display: grid;
   text-align: center;
+} */ 
+
+li, ul{
+  list-style-type: none;
+  margin: 0.2em;
 }
 
 /* .modal {
@@ -134,11 +139,11 @@ body {
     }  
 } */
 
-@media all and (min-width: 250px) and (max-width: 1200px){
+/* @media all and (min-width: 250px) and (max-width: 1200px){
     .grid {
         grid-template-columns: 1fr 1fr;
     }
-}
+} */
 
 /* @media all and (min-width: 1200px){
     .grid {

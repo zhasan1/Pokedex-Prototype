@@ -67,8 +67,11 @@ let pokemonRepository = (function () {
 
   // let modalContainer = document.querySelector(".modal-body"); /*variable needed to be redefined frequently so globally created*/
    
-  function showModal (title , text1, text2 , text3, img){
-    $(".modal-body").html(text1);
+  function showModal (title , text1, text2 , text3, img1, img2){
+    const body = `<img src=${img1}> <img src=${img2}> <br> ${text1} <br> ${text2} <br> ${text3}` /*string template*/
+    $(".modal-body").html(body);
+    $(".modal-title").html(title); 
+
     // modalContainer.innerHTML = " "; /*clears inner HTML format for modal-container ID*/
     // let modal = document.createElement("div"); /*creates div element in index line 40*/
     // modal.classList.add("modal"); /*adds the class modal to div tag*/
@@ -144,11 +147,21 @@ let pokemonRepository = (function () {
     let listItem = document.createElement("li")
 
     let button = document.createElement("button")
-    button.classList.add("button-class")
+    let span = document.createElement("span")
+    let img = document.createElement("img")
+
+    button.classList.add("btn")
+    button.classList.add("btn-primary")
+    button.classList.add("btn-lg")
+
     button.innerText = pokemon.name;
     button.setAttribute("data-toggle" , "modal")
     button.setAttribute("data-target" , "#exampleModal")
+    console.log(pokemon.imageUrl1)
+    img.setAttribute("src" , pokemon.imageUrl1)
+    span.append(img)
 
+    button.appendChild(span)
     listItem.appendChild(button) /*adds button to listItem*/
     mainList.append(listItem)
     button.addEventListener("click", function(event){
@@ -179,7 +192,8 @@ let pokemonRepository = (function () {
     return fetch(url).then(function(response){
       return response.json();
     }).then(function(details){
-      item.imageUrl = details.sprites.front_default;
+      item.imageUrl1 = details.sprites.front_default;
+      item.imageUrl2 = details.sprites.back_default;
       item.height = details.height;
       item.types = details.types;
       item.moves = details.moves;
@@ -191,7 +205,7 @@ let pokemonRepository = (function () {
   function showDetails(pokemon){
      loadDetails(pokemon).then(function(){
       // console.log(pokemon)
-      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.moves.map(x=>x.move.name) , pokemon.imageUrl);   
+      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.moves.map(x=>x.move.name) , pokemon.imageUrl1 , pokemon.imageUrl2);   
      })     
   } 
 
