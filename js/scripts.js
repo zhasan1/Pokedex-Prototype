@@ -148,18 +148,17 @@ let pokemonRepository = (function () {
 
     let button = document.createElement("button")
     let span = document.createElement("span")
-    let img = document.createElement("img")
+    let imageElement = document.createElement("img")
 
-    button.classList.add("btn")
-    button.classList.add("btn-primary")
-    button.classList.add("btn-lg")
-
+    button.classList.add("btn" , "btn-primary" , "btn-lg")
+  
     button.innerText = pokemon.name;
     button.setAttribute("data-toggle" , "modal")
     button.setAttribute("data-target" , "#exampleModal")
-    console.log(pokemon.imageUrl1)
-    img.setAttribute("src" , pokemon.imageUrl1)
-    span.append(img)
+    // console.log(pokemon.imageUrl1)
+    imageElement.setAttribute("src" , pokemon.imageUrl1)
+    imageElement.setAttribute("alt" , "Pokemon Image")
+    span.append(imageElement)
 
     button.appendChild(span)
     listItem.appendChild(button) /*adds button to listItem*/
@@ -177,7 +176,7 @@ let pokemonRepository = (function () {
     json.results.forEach(function(item){
       let pokemon = {
         name: item.name,
-        detailsUrl: item.url
+        detailsUrl: item.url,
         };
         add(pokemon);
     console.log(pokemon);
@@ -196,7 +195,7 @@ let pokemonRepository = (function () {
       item.imageUrl2 = details.sprites.back_default;
       item.height = details.height;
       item.types = details.types;
-      item.moves = details.moves;
+      item.abilities = details.abilities;
     }).catch (function(e){
       console.error(e);
     });
@@ -205,7 +204,7 @@ let pokemonRepository = (function () {
   function showDetails(pokemon){
      loadDetails(pokemon).then(function(){
       // console.log(pokemon)
-      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.moves.map(x=>x.move.name) , pokemon.imageUrl1 , pokemon.imageUrl2);   
+      showModal(pokemon.name , pokemon.height ,  pokemon.types.map(x=>x.type.name) , pokemon.abilities.map(x=>x.ability.name) , pokemon.imageUrl1 , pokemon.imageUrl2);   
      })     
   } 
 

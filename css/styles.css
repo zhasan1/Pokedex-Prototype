@@ -1,3 +1,8 @@
+li, ul{
+  list-style-type: none;
+  margin: 0.2em;
+}
+
 /* body{
     margin: 20px;
     background-color: silver;
@@ -90,11 +95,6 @@ body {
   /* display: grid;
   text-align: center;
 } */ 
-
-li, ul{
-  list-style-type: none;
-  margin: 0.2em;
-}
 
 /* .modal {
   margin: auto;
