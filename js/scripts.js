@@ -1,67 +1,6 @@
-/*JS code is always executed top to bottom, line by line.
-
-  alert('Hello World'); creates pop-up
-  console.log(); writes things into the console
-  document.write(); writes something on document*/
-
-/* Primitive data types: 6 types=> strings, numbers, boolean, null, undefined, symbol. 
-Strings:
-let text1 = 'This is a text!';
-let text2 = "This uses double quotes."
-document.write(text1);
-document.write(text2);
-let escapedText = "He said: \"Yes!\", that's for sure.";
-let escapedText2 = 'He said: "Yes!", that\'s for sure.';
-document.write(escapedText);
-document.write(escapedText2);
-
-alert('Hello World');
-
-let myName = '';
-let age = 31;
-let message = `Hello! This is a longer message here. 
-My name is ${myName},
-and I'm ${age}.`;
-document.write(message);
-
-/*Booleans come in one of two states: true or false. they are written as true or false
-let boolean1 = true;
-let boolean2 = false;
-let notABoolean = 'true';*/
-
-/*null indicates the value has been INTENTIONALLY SET TO BE EMPTY and undefined indicates that the value was NEVER SET*/
-
-/*Complex data types: made of multiple primitive or complex data types.
-Objects: An object is a complex data type*/
-
-/*Arrays are ordered lists of data item. example:
-let userAges = [27, 112, 87]; 
-
-array of arrays: 
-let myCalculatorNumbers = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-];
-
-mixed array:
-let numberArray = [1, 2, 3];
-let mixedArrays = [
-  1,
-  'two',
-  numberArray,
-  { naans: 5 }
-];
-document.write(mixedArrays);*/
-
 //alert("Welcome To The Pokedex!");
 let pokemonRepository = (function () {
-  let pokemonList = [
-    // {name: "Onyx", type: "Rock", height: 8.8},
-    // {name: "Weedle", type: ["Bug", "Grass"] , height: 2}, 
-    // {name: "Squirtle", type: "Water", height: 5},
-    // {name: "Raidon", type: ["Rock", "Ground"] , height: 7.6}
-  ];
+  let pokemonList = [];
 
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=200";
 
@@ -71,66 +10,7 @@ let pokemonRepository = (function () {
     const body = `<img src=${img1}> <img src=${img2}> <br> ${text1} <br> ${text2} <br> ${text3}` /*string template*/
     $(".modal-body").html(body);
     $(".modal-title").html(title); 
-
-    // modalContainer.innerHTML = " "; /*clears inner HTML format for modal-container ID*/
-    // let modal = document.createElement("div"); /*creates div element in index line 40*/
-    // modal.classList.add("modal"); /*adds the class modal to div tag*/
-    
-    // let closeButtonElement = document.createElement("button"); /*creates button element in index line 41*/
-    // closeButtonElement.classList.add("modal-close"); /*adds class to button index line 41*/
-    // closeButtonElement.innerText = "Close"; /*text inside button says Close*/
-    // closeButtonElement.addEventListener("click" , hideModal); /*adds eventListener for click action to execute hideModal function*/
-
-    // let titleElement = document.createElement("h1"); /*create h1 tag index line 42*/
-    // titleElement.innerText = title; /*inner text says name of pokemon*/
-
-    // let contentElement1 = document.createElement("p"); /*creates p tag index line 43*/
-    // contentElement1.innerText = "Height: " + text1; /*inner text shows height of pokemon*/
-    // contentElement1.classList.add("height-stat");
-
-
-    // let contentElement2 = document.createElement("p");
-    // contentElement2.innerText = "Types: "+ text2;
-    // contentElement2.classList.add("type-stat");
-
-    // let contentElement3 = document.createElement("p");
-    // contentElement3.innerText = "Moves: "+ text3;
-    // contentElement3.classList.add("move-stat");
-
-    // let imageElement = document.createElement("img"); /*creates img tag index line 44*/
-    // // imageElement.src = "https://pokeapi.co/api/v2/pokemon/?limit=50";
-    // imageElement.setAttribute ("src" , img); /*adds src attribute for a source for the image*/
-    // imageElement.setAttribute ( "width" , "304"); /*designates width for image*/
-    // imageElement.setAttribute ("height" , "228"); /*designates height for image*/
-    // imageElement.setAttribute ("alt" , "Pokemon image"); /*adds alt attribute to image lag*/
-    
-    // modal.appendChild(closeButtonElement);
-    // modal.appendChild(titleElement);
-    // modal.appendChild(contentElement1);
-    // modal.appendChild(contentElement2);
-    // modal.appendChild(contentElement3);
-    // modal.appendChild(imageElement);
-    // modalContainer.appendChild(modal);
-
-    // modalContainer.classList.add("is-visible"); /*assigns class is-visible to modal-container index line 40*/
   }
-
-  // function hideModal(){ /*function to close the info modal*/
-  //   modalContainer.classList.remove("is-visible"); /*removes class is-visible to close modal when eventlistener is triggered*/
-  // }
-
-  // window.addEventListener("keydown" , (e) => { /*function to close info modal using escape button*/
-  //   if (e.key === "Escape" && modalContainer.classList.contains('is-visible')){ /*if escape button is pushed and if the modal class is-visible then close the box*/
-  //     hideModal(); 
-  //   }
-  // });
-
-  // modalContainer.addEventListener ("click" , (e) => { /*clicking outside box closes it*/
-  //   let target = e.target;
-  //   if (target === modalContainer){
-  //     hideModal();
-  //   }
-  // });
 
   function getAll(){
     return pokemonList;
@@ -142,37 +22,42 @@ let pokemonRepository = (function () {
 
 
   function main(pokemon) {  
-    let mainList = document.querySelector(".pokemon-list");
+    // console.log(pokemon)
+    loadDetails(pokemon).then(function(){
+      // console.log(pokemon)
+      
+      let mainList = document.querySelector(".pokemon-list");
 
-    let listItem = document.createElement("li")
+      let listItem = document.createElement("li")
 
-    let button = document.createElement("button")
-    let span = document.createElement("span")
-    let imageElement = document.createElement("img")
+      let button = document.createElement("button")
+      let span = document.createElement("span")
+      let imageElement = document.createElement("img")
 
-    button.classList.add("btn" , "btn-primary" , "btn-lg")
-  
-    button.innerText = pokemon.name;
-    button.setAttribute("data-toggle" , "modal")
-    button.setAttribute("data-target" , "#exampleModal")
-    // console.log(pokemon.imageUrl1)
-    imageElement.setAttribute("src" , pokemon.imageUrl1)
-    imageElement.setAttribute("alt" , "Pokemon Image")
-    span.append(imageElement)
+      button.classList.add("btn" , "btn-primary" , "btn-lg")
+      button.innerText = pokemon.name;
+      button.setAttribute("data-toggle" , "modal")
+      button.setAttribute("data-target" , "#exampleModal")
+      // console.log(pokemon.imageUrl1)
+      imageElement.setAttribute("src" , pokemon.imageUrl1)
+      imageElement.setAttribute("alt" , "Pokemon Image")
+      span.append(imageElement)
 
-    button.appendChild(span)
-    listItem.appendChild(button) /*adds button to listItem*/
-    mainList.append(listItem)
-    button.addEventListener("click", function(event){
-      showDetails(pokemon);
-    });
+      button.appendChild(span)
+      listItem.appendChild(button) /*adds button to listItem*/
+      mainList.append(listItem)
+
+      button.addEventListener("click", function(){
+        showDetails(pokemon);
+      });
+    })
     } // main
 
   function loadList(){
     return fetch(apiUrl).then(function(response){
       return response.json();
     }).then(function(json){
-    //console.log(json)
+    console.log(json)
     json.results.forEach(function(item){
       let pokemon = {
         name: item.name,
@@ -276,6 +161,65 @@ pokemonRepository.loadList().then(function(){
 
 // })();
 
+ // modalContainer.innerHTML = " "; /*clears inner HTML format for modal-container ID*/
+    // let modal = document.createElement("div"); /*creates div element in index line 40*/
+    // modal.classList.add("modal"); /*adds the class modal to div tag*/
+    
+    // let closeButtonElement = document.createElement("button"); /*creates button element in index line 41*/
+    // closeButtonElement.classList.add("modal-close"); /*adds class to button index line 41*/
+    // closeButtonElement.innerText = "Close"; /*text inside button says Close*/
+    // closeButtonElement.addEventListener("click" , hideModal); /*adds eventListener for click action to execute hideModal function*/
+
+    // let titleElement = document.createElement("h1"); /*create h1 tag index line 42*/
+    // titleElement.innerText = title; /*inner text says name of pokemon*/
+
+    // let contentElement1 = document.createElement("p"); /*creates p tag index line 43*/
+    // contentElement1.innerText = "Height: " + text1; /*inner text shows height of pokemon*/
+    // contentElement1.classList.add("height-stat");
+
+
+    // let contentElement2 = document.createElement("p");
+    // contentElement2.innerText = "Types: "+ text2;
+    // contentElement2.classList.add("type-stat");
+
+    // let contentElement3 = document.createElement("p");
+    // contentElement3.innerText = "Moves: "+ text3;
+    // contentElement3.classList.add("move-stat");
+
+    // let imageElement = document.createElement("img"); /*creates img tag index line 44*/
+    // // imageElement.src = "https://pokeapi.co/api/v2/pokemon/?limit=50";
+    // imageElement.setAttribute ("src" , img); /*adds src attribute for a source for the image*/
+    // imageElement.setAttribute ( "width" , "304"); /*designates width for image*/
+    // imageElement.setAttribute ("height" , "228"); /*designates height for image*/
+    // imageElement.setAttribute ("alt" , "Pokemon image"); /*adds alt attribute to image lag*/
+    
+    // modal.appendChild(closeButtonElement);
+    // modal.appendChild(titleElement);
+    // modal.appendChild(contentElement1);
+    // modal.appendChild(contentElement2);
+    // modal.appendChild(contentElement3);
+    // modal.appendChild(imageElement);
+    // modalContainer.appendChild(modal);
+
+    // modalContainer.classList.add("is-visible"); /*assigns class is-visible to modal-container index line 40*/
+
+
+    // function hideModal(){ /*function to close the info modal*/
+  //   modalContainer.classList.remove("is-visible"); /*removes class is-visible to close modal when eventlistener is triggered*/
+  // }
+
+  // window.addEventListener("keydown" , (e) => { /*function to close info modal using escape button*/
+  //   if (e.key === "Escape" && modalContainer.classList.contains('is-visible')){ /*if escape button is pushed and if the modal class is-visible then close the box*/
+  //     hideModal(); 
+  //   }
+  // });
+
+  // modalContainer.addEventListener ("click" , (e) => { /*clicking outside box closes it*/
+  //   let target = e.target;
+  //   if (target === modalContainer){
+  //     hideModal();
+  //   }
+  // });
 
 
 
