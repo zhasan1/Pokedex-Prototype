@@ -3,8 +3,6 @@ let pokemonRepository = (function () {
 
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=200";
 
-  // let modalContainer = document.querySelector(".modal-body"); /*variable needed to be redefined frequently so globally created*/
-
   function showModal(title, text1, text2, text3, img1, img2) {
     const body = `<img src=${img1}> <img src=${img2}> <br> ${text1} <br> ${text2} <br> ${text3}`; /*string template*/
     $(".modal-body").html(body);
@@ -20,10 +18,8 @@ let pokemonRepository = (function () {
   }
 
   function main(pokemon) {
-    // console.log(pokemon)
-    loadDetails(pokemon).then(function () {
-      // console.log(pokemon)
-
+    
+    loadDetails(pokemon).then(function () {  
       let mainList = document.querySelector(".pokemon-list");
 
       let listItem = document.createElement("li");
@@ -36,7 +32,7 @@ let pokemonRepository = (function () {
       button.innerText = pokemon.name;
       button.setAttribute("data-toggle", "modal");
       button.setAttribute("data-target", "#exampleModal");
-      // console.log(pokemon.imageUrl1)
+  
       imageElement.setAttribute("src", pokemon.imageUrl1);
       imageElement.setAttribute("alt", "Pokemon Image");
       span.append(imageElement);
@@ -92,7 +88,6 @@ let pokemonRepository = (function () {
 
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
-      // console.log(pokemon)
       showModal(
         pokemon.name,
         pokemon.height,
