@@ -112,6 +112,7 @@ let pokemonRepository = (function () {
     loadList: loadList,
     loadDetails: loadDetails,
     showDetails: showDetails,
+    filterList: filterList,
   }; //return
 })();
 
